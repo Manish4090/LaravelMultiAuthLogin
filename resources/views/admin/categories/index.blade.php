@@ -24,36 +24,41 @@
 @endif
 
 
-<table class="table table-bordered">
- <tr>
-   <th>No</th>
-   <th>PARENT CATEGORY</th>
-   <th>SUB CATEGORY </th>
-   <th>ACTIVE</th>
-   <th width="280px">Action</th>
- </tr>
- @foreach ($data as $key => $data)
- <?php //echo "<pre>"; print_r($data->parent_id); ?>
-  <tr>
-    <td>{{$data->id}}</td>
-    <td>{{$data->cat_name}}</td>
-	@if(!empty($data->id))
-    <td>{{ App\Helpers::getSubCatName($data->id) }}</td>
-	@else
-	<td>NA</td>
-	@endif
-    <td>{{ $data->status }}</td>
-    
-    <td>
-       <a class="btn btn-info" href="{{ url('admin/show-categories',$data->id) }}">Show</a>
-       <a class="btn btn-primary" href="{{ url('admin/edit-categories',$data->id) }}">Edit</a>
-       
-    </td>
-  </tr>
- @endforeach
-</table>
+<table class="table table-borderless" id="table1">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>PARENT CATEGORY</th>
+					<th>SUB CATEGORY </th>
+					<th>ACTIVE</th>
+					<th width="280px">Action</th>
+				</tr>
+			</thead>
+			<tbody id="aaaaaaa">
+			@forelse($data as $key => $data)
+			
+				<td>{{$data->id}}</td>
+					<td>{{$data->cat_name}}</td>
+					@if(!empty($data->id))
+					<td>{{ App\Helpers::getSubCatName($data->id) }}</td>
+					@else
+					<td>NA</td>
+					@endif
+					<td>{{ $data->status }}</td>
+					
+					<td>
+					   <a class="btn btn-info" href="{{ url('admin/show-categories',$data->id) }}">Show</a>
+					   <a class="btn btn-primary" href="{{ url('admin/edit-categories',$data->id) }}">Edit</a>
+					   
+					</td>
+				  </tr>
+			@empty
+			<td>No Records Found!!</td>
+			@endforelse
+				</tbody>
+		</table>
 
 </div>
-   
+
 </x-admin-layout>
    

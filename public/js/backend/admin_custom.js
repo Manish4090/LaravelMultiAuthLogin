@@ -17,6 +17,10 @@ $( function(){
 	  $( "#datepicker1" ).datepicker();
   });
 
+$(document).ready(function() {
+    $('#table1').DataTable();
+});
+
 
 // Generate a password string
 function randString(id){

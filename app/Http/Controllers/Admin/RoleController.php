@@ -9,6 +9,8 @@ use DB;
 use App\Models\Admin;
 use App\Models\Role;
 use App\Models\Permission;
+use App\Models\RolesPermissions;
+use Illuminate\Support\Str;
     
 class RoleController extends Controller
 {
@@ -29,6 +31,9 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
+		
+		 $permission = Permission::where('slug','role-edit')->first();
+		 //dd(\Auth::guard('admin')->user()->hasPermissionTo($permission));
         $roles = Role::orderBy('id','DESC')->paginate(5);
         return view('admin.roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
@@ -57,10 +62,18 @@ class RoleController extends Controller
             'name' => 'required|unique:roles,name',
             'permission' => 'required',
         ]);
-    
-        $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
-    
+		$slug = Str::slug($request->input('name'), '-');
+		
+        $role = Role::create(['name' => $request->input('name'),'slug'=>$slug]);
+		Role::whereId($role->id)->first()->permissions()->attach([1,2]);
+		/*$dev_role = new Role();
+		$dev_role->slug = $slug;
+		$dev_role->name = $request->input('name');
+		$dev_role->save();
+		$dev_role->slug;*/
+		//$dev_permission = Permission::where('slug',$role['slug'])->first();
+		//$role->permissions()->attach($dev_permission);
+		
         return redirect()->route('admin.roles')
                         ->with('success','Role created successfully');
     }
@@ -76,9 +89,15 @@ class RoleController extends Controller
         // $user->permissions()->attach($permission);
         // dd($user->permissions);
 		
-		//$role = Permission::where('slug','role-edit')->first();
+		//$role = Permission::where('slug','role-create')->first();
 		//\Auth::guard('admin')->user()->hasPermissionTo($role);
 		//dd(\Auth::guard('admin')->user()->hasPermissionTo($role));
+		/*$dev_role = Role::where('slug','admin')->first();
+		$createTasks = new Permission();
+		$createTasks->slug = 'role-delete';
+		$createTasks->name = 'Role Delete';
+		$createTasks->save();
+		$createTasks->roles()->attach($dev_role);*/
 		
         $role = Role::where('id',$id)->with('permissions')->first();
         //dd($role);
@@ -115,10 +134,12 @@ class RoleController extends Controller
             'permission' => 'required',
         ]);
 		$data = $request->all();
-		dd($data);
+		
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->update();
+		
+		
 			
 		$role->permissions()->attach($data['permission']);
 		

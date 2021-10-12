@@ -5,9 +5,9 @@
             <h2>Role Management</h2>
         </div>
         <div class="pull-right">
-        @can('role-create')
+        @permission('role-create')
             <a class="btn btn-success" href="{{ route('admin.create-roles') }}"> Create New Role</a>
-            @endcan
+            @endpermission
         </div>
     </div>
 </div>
@@ -19,30 +19,35 @@
     </div>
 @endif
 
+<table class="table table-borderless" id="table1">
+			<thead>
+				<th>No</th>
+				<th>Name</th>
+				<th width="280px">Action</th>
+			</thead>
+			<tbody id="aaaaaaa">
+			 @forelse ($roles as $key => $role)
+				<tr>
+					<td>{{ ++$i }}</td>
+					<td>{{ $role->name }}</td>
+					<td>
+						<a class="btn btn-info" href="{{ url('admin/show-roles',$role->id) }}">Show</a>
+						@permission('role-edit')
+							<a class="btn btn-primary" href="{{ url('admin/edit-roles',$role->id) }}">Edit</a>
+						@endpermission
+						@permission('role-delete')
+							{!! Form::open(['method' => 'DELETE','url' => ['admin/destroy-roles', $role->id],'style'=>'display:inline']) !!}
+								{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+							{!! Form::close() !!}
+						@endpermission
+					</td>
+				</tr>
+			@empty
+			<td>No Records Found!!</td>
+			@endforelse
+			</tbody>
+		</table>
 
-<table class="table table-bordered">
-  <tr>
-     <th>No</th>
-     <th>Name</th>
-     <th width="280px">Action</th>
-  </tr>
-    @foreach ($roles as $key => $role)
-    <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{ $role->name }}</td>
-        <td>
-            <a class="btn btn-info" href="{{ url('admin/show-roles',$role->id) }}">Show</a>
-            @permission('role-edit')
-                <a class="btn btn-primary" href="{{ url('admin/edit-roles',$role->id) }}">Edit</a>
-            @endpermission
-            @permission('role-delete')
-                {!! Form::open(['method' => 'DELETE','url' => ['admin/destroy-roles', $role->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                {!! Form::close() !!}
-            @endpermission
-        </td>
-    </tr>
-    @endforeach
-</table>
 
 </x-admin-layout>
+	
