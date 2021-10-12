@@ -36,6 +36,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('login','AuthenticatedSessionController@create')->name('login');
         Route::post('login','AuthenticatedSessionController@store')->name('adminlogin');
     });
+	
+	Route::group(['middleware' => 'role:admin'], function() {
+		Route::any('roles', 'RoleController@index')->name('roles');
+	});
+	
     Route::middleware('admin')->group(function(){
         Route::get('dashboard','HomeController@index')->name('dashboard');
         Route::get('delete-post','HomeController@addpost')->name('delete-post');
@@ -59,7 +64,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 		Route::any('delete-users-management/{id}', 'UserController@userdestroy')->name('delete-users-management');
 		
 		// User Role Routes
-		Route::any('roles', 'RoleController@index')->name('roles');
+		
 		Route::any('edit-roles/{id}', 'RoleController@edit')->name('edit-roles');
 		Route::any('update-roles/{id}', 'RoleController@update')->name('update-roles');
 		Route::any('show-roles/{id}', 'RoleController@show')->name('show-roles');

@@ -7,15 +7,21 @@ use Illuminate\Http\Request;
 
 class RoleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle(Request $request, Closure $next)
+
+    public function handle($request, Closure $next, $role, $permission = null)
     {
+        if(!\Auth::guard('admin')->user()->hasRole($role)) {
+
+             abort(404);
+
+        }
+
+        if($permission !== null && !\Auth::guard('admin')->user()->can($permission)) {
+
+              abort(404);
+        }
+
         return $next($request);
+
     }
 }

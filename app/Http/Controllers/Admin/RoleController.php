@@ -33,7 +33,7 @@ class RoleController extends Controller
     {
 		
 		 $permission = Permission::where('slug','role-edit')->first();
-		 //dd(\Auth::guard('admin')->user()->hasPermissionTo($permission));
+		 //dd(\Auth::guard('admin')->user()->hasRole('admin'));
         $roles = Role::orderBy('id','DESC')->paginate(5);
         return view('admin.roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
