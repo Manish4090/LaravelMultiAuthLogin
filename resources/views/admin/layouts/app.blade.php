@@ -11,12 +11,12 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 		<!-- Fonts -->
        
-		
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind-dark.css" integrity="sha512-zwOVL7kX7p3gJo7CG9THDmKE0Y6vRGTw6xVT+SSiqoZifnX9xpE8keXaY7VevzDl1cJicAsiKHRxz4loxweSZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-		<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="{{ asset('css/backend/tailwind-dark.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/backend/jquery-ui.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/backend/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/backend/jquery.dataTables.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/backend/custom_style.css') }}">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
@@ -29,9 +29,8 @@
 
         <!-- Styles -->
         <!---link rel="stylesheet" href="{{ asset('css/app.css') }}"--->
-  
+	
 		
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>

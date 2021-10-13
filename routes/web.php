@@ -38,7 +38,13 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     });
 	
 	Route::group(['middleware' => 'role:admin'], function() {
-		Route::any('roles', 'RoleController@index')->name('roles');
+		Route::any('edit-roles/{id}', 'RoleController@edit')->name('edit-roles');
+		Route::any('update-roles/{id}', 'RoleController@update')->name('update-roles');
+		Route::any('show-roles/{id}', 'RoleController@show')->name('show-roles');
+		Route::any('create-roles', 'RoleController@create')->name('create-roles');
+		Route::any('store-roles', 'RoleController@store')->name('store-roles');
+		Route::any('destroy-roles/{id}', 'RoleController@destroy')->name('destroy-roles');
+		
 	});
 	
     Route::middleware('admin')->group(function(){
@@ -65,12 +71,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 		
 		// User Role Routes
 		
-		Route::any('edit-roles/{id}', 'RoleController@edit')->name('edit-roles');
-		Route::any('update-roles/{id}', 'RoleController@update')->name('update-roles');
-		Route::any('show-roles/{id}', 'RoleController@show')->name('show-roles');
-		Route::any('create-roles', 'RoleController@create')->name('create-roles');
-		Route::any('store-roles', 'RoleController@store')->name('store-roles');
-		Route::any('destroy-roles/{id}', 'RoleController@destroy')->name('destroy-roles');
+		Route::any('roles', 'RoleController@index')->name('roles');
 		
 		//categories Routes
 		Route::get('categories', 'CategoriesController@index')->name('categories');
@@ -79,6 +80,22 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 		Route::post('update-categories/{id}', 'CategoriesController@updatecategories')->name('update-categories');
 		Route::any('add-categories', 'CategoriesController@addcategories')->name('add-categories');
 		Route::any('store-categories', 'CategoriesController@storecategories')->name('store-categories');
+		
+		//Manage Location route
+		Route::get('managelocation', 'ManageLocationsController@managelocation')->name('managelocation');
+		Route::any('create-newlocations', 'ManageLocationsController@createnewlocations')->name('create-newlocations');
+		Route::any('store-locations', 'ManageLocationsController@storelocations')->name('store-locations');
+		Route::any('edit-locations/{id}', 'ManageLocationsController@editlocations')->name('edit-locations');
+		Route::any('update-locations/{id}', 'ManageLocationsController@updatelocations')->name('update-locations');
+		Route::any('delete-locations/{id}', 'ManageLocationsController@deletelocations')->name('delete-locations');
+		
+		//Manage Location route
+		Route::get('manageshipping', 'ManageShippingController@index')->name('manageshipping');
+		Route::any('create-shipping', 'ManageShippingController@createshipping')->name('create-shipping');
+		Route::any('store-shipping', 'ManageShippingController@storeshipping')->name('store-shipping');
+		Route::any('edit-shipping/{id}', 'ManageShippingController@editshipping')->name('edit-shipping');
+		Route::any('update-shipping/{id}', 'ManageShippingController@updateshipping')->name('update-shipping');
+		Route::any('delete-shipping/{id}', 'ManageShippingController@deleteshipping')->name('delete-shipping');
     });
     Route::post('logout','Auth\AuthenticatedSessionController@destroy')->name('logout');
 });

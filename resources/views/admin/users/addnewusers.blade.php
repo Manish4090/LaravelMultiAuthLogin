@@ -36,32 +36,35 @@
 							  
 								<div class="form-group row">
 									<div class="col-lg-6">
-									<label class=" form-control-label">Name</label>
+									<strong>Name <label>*</label> :</strong>
 										<input class="form-control" type="text" name="name" value="" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-lg-6">
-									<label class=" form-control-label">Email</label>
+									<strong>Email <label>*</label> :</strong>
 										<input class="form-control" type="email" name="email" value="" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-lg-6">
 									
-									<button type="button" class="btn btn-default btn-lg getNewPass"><span class="fa fa-refresh"></span>Genrate Password</button>
+									<button type="button" class="btn btn-default btn-lg getNewPass">
+									<strong class="fa fa-refresh"></strong>Genrate Password</button>
 										 <input type="text" class="form-control input-lg" name="password" rel="gp" data-size="32" data-character-set="a-z,A-Z,0-9,#">
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-lg-6">
-									<label class=" form-control-label">Phone</label>
+									<strong>Phone <label>*</label> :</strong>
+									
 										<input class="form-control" type="phone" name="phone" value="" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-lg-6">
-									<label class=" form-control-label">Status</label>
+									<strong>Status  :</strong>
+									
 										<select id="status" class="form-control" name="status">
 										  <option value="1">Active</option>
 										  <option value="0">Inactive</option>
@@ -73,10 +76,10 @@
 								
 								
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Country</label>
+								<strong>Country  :</strong>
 									<div class="col-lg-9">
 										<select name="country"  id="country-dd" class="form-control">
-											<option value="" >Select Country</option>
+											<option value="" >Select Country :</option>
 											@foreach ($countries as $data)
 											<option value="{{$data->name}}" data-id="{{$data->id}}">
 												{{$data->name}}
@@ -87,33 +90,33 @@
 								</div>
 								
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">State</label>
+									<strong class="col-lg-3 col-form-label form-control-label">State :</strong>
 									<div class="col-lg-9">
 										<select class="form-control" id="state-dd" name="state">
 										</select>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">City</label>
+									<strong class="col-lg-3 col-form-label form-control-label">City :</strong>
 									<div class="col-lg-9">
 										<input class="form-control" name="city" type="text" value="{{ @$userDetail['city'] }}" />
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Zip Code</label>
+									<strong class="col-lg-3 col-form-label form-control-label">Zip Code :</strong>
 									<div class="col-lg-9">
 										<input class="form-control" name="zipcode" type="text" value="{{ @$userDetail['zipcode'] }}" />
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Full Address</label>
+									<strong class="col-lg-3 col-form-label form-control-label">Full Address :</strong>
 									<div class="col-lg-9">
 										<textarea class="form-control" id="address" name="address" value="fasdflk" rows="4" cols="50">{{ @$userDetail['address'] }}
 										</textarea>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Billing Address</label>
+									<strong class="col-lg-3 col-form-label form-control-label">Billing Address</strong>
 									<div class="col-lg-9">
 										<input id="billingadd" type="checkbox" name="default_address" value="">
 									</div>
@@ -124,7 +127,7 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
 									<div class="col-lg-9">
-										<input class="form-control" type="submit" value="Save" />
+										 <button type="submit" class="btn btn-primary">Submit</button>
 									</div>
 								</div>
 								

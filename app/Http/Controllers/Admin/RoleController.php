@@ -63,9 +63,9 @@ class RoleController extends Controller
             'permission' => 'required',
         ]);
 		$slug = Str::slug($request->input('name'), '-');
-		
+		$data = $request->all();
         $role = Role::create(['name' => $request->input('name'),'slug'=>$slug]);
-		Role::whereId($role->id)->first()->permissions()->attach([1,2]);
+		Role::whereId($role->id)->first()->permissions()->attach($data['permission']);
 		/*$dev_role = new Role();
 		$dev_role->slug = $slug;
 		$dev_role->name = $request->input('name');

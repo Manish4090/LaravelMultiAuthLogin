@@ -22,51 +22,51 @@
 							 {{csrf_field()}}
 							 <input type="hidden" name="userId" value="{{ $userDetail['id'] }}">
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Name</label>
+									<strong class="col-lg-3 col-form-strong form-control-strong">Name : </strong>
 									<div class="col-lg-9">
 										<input class="form-control" type="text" name="name" value="{{ $userDetail['name'] }}" />
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Email</label>
+									<strong class="col-lg-3 col-form-strong form-control-strong">Email : </strong>
 									<div class="col-lg-9">
 										<input class="form-control" name="email" type="email" value="{{ $userDetail['email'] }}" />
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Phone</label>
+									<strong class="col-lg-3 col-form-strong form-control-strong">Phone : </strong>
 									<div class="col-lg-9">
 										<input class="form-control" name="phone" type="phone" value="{{ $userDetail['phone'] }}" />
 									</div>
 								</div>
 								
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Country</label>
+									<strong class="col-lg-3 col-form-strong form-control-strong">Country : </strong>
 									<div class="col-lg-9">
 										<input class="form-control" name="country" type="text" value="{{ @$userDetail['country'] }}" />
 									</div>
 								</div>
 								
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">State</label>
+									<strong class="col-lg-3 col-form-strong form-control-strong">State : </strong>
 									<div class="col-lg-9">
 										<input class="form-control" name="state" type="text" value="{{ @$userDetail['state'] }}" />
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">City</label>
+									<strong class="col-lg-3 col-form-strong form-control-strong">City : </strong>
 									<div class="col-lg-9">
 										<input class="form-control" name="city" type="text" value="{{ @$userDetail['city'] }}" />
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Zip Code</label>
+									<strong class="col-lg-3 col-form-strong form-control-strong">Zip Code : </strong>
 									<div class="col-lg-9">
 										<input class="form-control" name="zipcode" type="text" value="{{ @$userDetail['zipcode'] }}" />
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">Full Address</label>
+									<strong class="col-lg-3 col-form-strong form-control-strong">Full Address : </strong>
 									<div class="col-lg-9">
 										<textarea class="form-control" id="address" name="address" value="fasdflk" rows="4" cols="50">{{ @$userDetail['address'] }}
 										</textarea>
@@ -75,9 +75,9 @@
 								
 								
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label"></label>
+									<strong class="col-lg-3 col-form-strong form-control-strong"> : </strong>
 									<div class="col-lg-9">
-										<input class="form-control" type="submit" value="Save" />
+										 <button type="submit" class="btn btn-primary">Submit</button>
 									</div>
 								</div>
 								

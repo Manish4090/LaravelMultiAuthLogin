@@ -61,6 +61,7 @@ class UserController extends Controller
 		$getData = array(
 			'name' => $data['name'],
 			'email' => $data['email'],
+			'phone' => $data['phone'],
 			'country' => $data['country'],
 			'state' => $data['state'],
 			'city' => $data['city'],
@@ -81,7 +82,7 @@ class UserController extends Controller
 		//dd($data);
 		$validatedData = $request->validate([
 			'name' => 'required',
-			'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+			'email' => 'required|email|unique:admins,email|regex:/(.+)@(.+)\.(.+)/i',
 			'phone' => 'required|min:10|numeric',
 		]);
 		$newCus = User::create([
@@ -152,7 +153,7 @@ class UserController extends Controller
 		//dd( $input);
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:admins,email',
             'password' => 'required',
             'roles' => 'required'
         ]);
@@ -183,7 +184,7 @@ class UserController extends Controller
 		
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:admins,email,'.$id,
             'roles' => 'required'
         ]);
     
